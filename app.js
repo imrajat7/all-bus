@@ -4,8 +4,10 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 
 const userRoutes = require('./api/routes/user');
+const adminRoutes = require('./api/routes/admin');
 
 mongoose.connect(
     "mongodb+srv://all-bus:" + 
@@ -13,9 +15,20 @@ mongoose.connect(
     "@all-bus-luhf5.mongodb.net/test?retryWrites=true&w=majority",
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex:true
     }
 );
+
+let db = mongoose.connection;
+
+db.once('open',()=>{
+    console.log('Db connected sucessfully');
+});
+
+db.on('error',(err)=>{
+    console.log(err);
+})
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -23,7 +36,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Handling Routes
-// app.use('/user',userRoutes);
+app.use('/user',userRoutes);
+app.use('/admin',adminRoutes);
 
 
 app.use((req,res,next)=>{

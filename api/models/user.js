@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    name: { type: String },
     email: { type: String,
         required: true,
         unique: true,
@@ -10,8 +11,9 @@ const userSchema = mongoose.Schema({
     password: { type: String,
         required:true 
     },
-    bookings: { type: String },
-    status: { type: String}
+    bookings: { type: Array },
+    status: { type: String},
+    isAdmin: { type: String}
 });
 
 module.exports = mongoose.model('User', userSchema);
