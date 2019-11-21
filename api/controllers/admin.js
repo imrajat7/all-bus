@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
-exports.admin_listall = (req,res,next)=>{
+exports.users_get_all = (req,res,next)=>{
     if(req.userData.isAdmin != '1'){
         res.status(401).json({
             message: 'Auth Failed Not an admin'

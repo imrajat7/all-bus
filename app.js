@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const userRoutes = require('./api/routes/user');
 const adminRoutes = require('./api/routes/admin');
+const busRoutes = require('./api/routes/bus');
 
 mongoose.connect(
     "mongodb+srv://all-bus:" + 
@@ -38,6 +39,7 @@ app.use(cors());
 //Handling Routes
 app.use('/user',userRoutes);
 app.use('/admin',adminRoutes);
+app.use('/bus',busRoutes);
 
 
 app.use((req,res,next)=>{
