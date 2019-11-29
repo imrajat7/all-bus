@@ -10,6 +10,7 @@ const userRoutes = require('./api/routes/user');
 const adminRoutes = require('./api/routes/admin');
 const busRoutes = require('./api/routes/bus');
 const bookingRoutes = require('./api/routes/booking');
+const searchRoutes = require('./api/routes/search');
 
 mongoose.connect(
     "mongodb+srv://all-bus:" + 
@@ -42,6 +43,7 @@ app.use('/user',userRoutes);
 app.use('/admin',adminRoutes);
 app.use('/bus',busRoutes);
 app.use('/booking',bookingRoutes);
+app.use('/search',searchRoutes);
 
 
 app.use((req,res,next)=>{
