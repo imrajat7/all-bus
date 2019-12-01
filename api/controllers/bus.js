@@ -12,6 +12,7 @@ exports.buses_create_bus = (req,res,next)=>{
             _id: mongoose.Types.ObjectId(),
             name: req.body.name,
             drivernum: req.body.drivernum,
+            date: req.body.date,
             source: req.body.source,
             destination: req.body.destination,
             seats: req.body.seats,
