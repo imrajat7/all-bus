@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
 exports.users_get_all = (req,res,next)=>{
-    if(req.userData.isAdmin != '1'){
+    if(req.userData.role != 'admin'){
         res.status(401).json({
             message: 'Auth Failed Not an admin'
         })
@@ -39,7 +39,7 @@ exports.users_get_all = (req,res,next)=>{
 }
 
 exports.users_get_user = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth Failed'
         })
@@ -73,7 +73,7 @@ exports.users_get_user = (req,res,next)=>{
 }
 
 exports.users_delete_user = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth Failed'
         })

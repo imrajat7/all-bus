@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Bus = require('../models/bus');
 
 exports.buses_create_bus = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth failed & not an admin'
         });
@@ -37,13 +37,13 @@ exports.buses_create_bus = (req,res,next)=>{
 }
 
 exports.buses_get_all = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth Failed Not an Admin'
         })
     }else{
         Bus.find()
-        .select('_id name source destination departure')
+        .select('_id name source destination departure date')
         .exec()
         .then(docs=>{
             const response = {
@@ -53,6 +53,7 @@ exports.buses_get_all = (req,res,next)=>{
                         _id: doc._id,
                         name: doc.name,
                         source: doc.source,
+                        date: doc.date,
                         destination: doc.destination,
                         departure: doc.departure,
                         request:{
@@ -74,7 +75,7 @@ exports.buses_get_all = (req,res,next)=>{
 }
 
 exports.buses_get_bus = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth failed & not an Admin'
         })
@@ -110,7 +111,7 @@ exports.buses_get_bus = (req,res,next)=>{
 
 exports.buses_delete_bus = (req,res,next)=>{
     const id = req.params.busId;
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'Auth Failed & not an Admin'
         })

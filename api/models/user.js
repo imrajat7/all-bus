@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
     },
     bookings: { type: Array },
     status: { type: String},
-    isAdmin: { type: String}
+    role: { type: String}
 });
 
 module.exports = mongoose.model('User', userSchema);

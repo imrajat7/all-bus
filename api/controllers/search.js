@@ -5,8 +5,7 @@ var Bus = require('../models/bus');
 exports.buses_get_bus = (req,res,next)=>{
     Bus.find({
         source: req.body.source.toLowerCase(),
-        destination: req.body.destination.toLowerCase(),
-        // date: req.body.date
+        destination: req.body.destination.toLowerCase()
     })
     .exec()
     .then(docs=>{

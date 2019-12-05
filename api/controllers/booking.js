@@ -26,7 +26,7 @@ exports.booking_create_booking = (req,res,next)=>{
 }
 
 exports.bookings_get_all = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         res.status(401).json({
             message: 'You are not the right person to access this'
         });
@@ -91,7 +91,7 @@ exports.bookings_get_booking = (req,res,next)=>{
 }
 
 exports.bookings_delete_booking = (req,res,next)=>{
-    if(req.userData.isAdmin!=1){
+    if(req.userData.role!='admin'){
         req.status(401).json({
             message: 'Auth Failed & you are not an admin'
         })
