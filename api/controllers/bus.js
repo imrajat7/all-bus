@@ -53,8 +53,8 @@ exports.buses_get_all = (req,res,next)=>{
                         _id: doc._id,
                         name: doc.name,
                         source: doc.source,
-                        date: doc.date,
                         destination: doc.destination,
+                        date: doc.date,
                         departure: doc.departure,
                         request:{
                             type: 'GET',
