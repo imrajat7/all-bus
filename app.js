@@ -11,6 +11,7 @@ const adminRoutes = require('./api/routes/admin');
 const busRoutes = require('./api/routes/bus');
 const bookingRoutes = require('./api/routes/booking');
 const searchRoutes = require('./api/routes/search');
+const homeRoute = require('./api/routes/home');
 
 mongoose.connect(
     "mongodb+srv://all-bus:" + 
@@ -39,6 +40,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Handling Routes
+app.use('/',homeRoute);
 app.use('/user',userRoutes);
 app.use('/admin',adminRoutes);
 app.use('/bus',busRoutes);
