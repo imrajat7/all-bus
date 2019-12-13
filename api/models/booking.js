@@ -5,6 +5,7 @@ const bookingSchema = mongoose.Schema({
     busId: {type:String},
     userId: { type: String },
     email: { type: String },
+    contactNo: { type: String},
     numOfSeats: { type: Number },
     date: { type: String,
         default:Date().substr(0,24) 

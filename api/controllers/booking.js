@@ -5,8 +5,9 @@ exports.booking_create_booking = (req,res,next)=>{
     const booking = new Booking({
         _id: mongoose.Types.ObjectId(),
         busId: req.body.busId,
-        userId: req.userData.userId,
-        email: req.userData.email,
+        userId: req.body.userId,
+        email: req.body.email,
+        contactNo: req.body.contactNo,
         numOfSeats: req.body.numOfSeats,
         payment: 'done'
     });
@@ -14,6 +15,7 @@ exports.booking_create_booking = (req,res,next)=>{
     .then(result=>{
         console.log(result);
         res.status(201).json({
+            bookingId: result._id,
             message: 'Booking Done'
         })
     })

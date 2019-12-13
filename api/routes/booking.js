@@ -5,7 +5,7 @@ const checkAuth = require('../middleware/check-auth');
 
 const bookingController = require('../controllers/booking');
 
-router.post('/', checkAuth ,bookingController.booking_create_booking);
+router.post('/',bookingController.booking_create_booking);
 router.get('/', checkAuth, bookingController.bookings_get_all);
 router.get('/:bookingId', bookingController.bookings_get_booking);
 router.delete('/:bookingId', checkAuth, bookingController.bookings_delete_booking);
