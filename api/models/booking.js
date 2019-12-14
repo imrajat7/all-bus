@@ -4,8 +4,10 @@ const bookingSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     busId: {type:String},
     userId: { type: String },
+    name:{ type: String},
     email: { type: String },
     contactNo: { type: String},
+    address: {type: String},
     numOfSeats: { type: Number },
     date: { type: String,
         default:Date().substr(0,24) 

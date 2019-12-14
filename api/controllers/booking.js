@@ -5,9 +5,11 @@ exports.booking_create_booking = (req,res,next)=>{
     const booking = new Booking({
         _id: mongoose.Types.ObjectId(),
         busId: req.body.busId,
+        name: req.body.name,
         userId: req.body.userId,
         email: req.body.email,
         contactNo: req.body.contactNo,
+        address: req.body.address,
         numOfSeats: req.body.numOfSeats,
         payment: 'done'
     });
