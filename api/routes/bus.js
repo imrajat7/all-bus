@@ -9,6 +9,5 @@ router.get('/',checkAuth, BusController.buses_get_all);
 // checkauth removed from get bus
 router.get('/:busId', BusController.buses_get_bus);
 router.delete('/:busId', checkAuth, BusController.buses_delete_bus);
-router.get('/')
 
 module.exports = router;
