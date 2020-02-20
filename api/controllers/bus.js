@@ -77,7 +77,7 @@ exports.buses_get_all = (req,res,next)=>{
 exports.buses_get_bus = (req,res,next)=>{
     const id = req.params.busId;
     Bus.findById(id)
-    .select('_id name source destination departure')
+    .select('_id name source destination departure arrival')
     .exec()
     .then(doc=>{
         console.log('From Database' ,doc);
