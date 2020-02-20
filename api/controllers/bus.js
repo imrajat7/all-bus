@@ -75,38 +75,32 @@ exports.buses_get_all = (req,res,next)=>{
 }
 
 exports.buses_get_bus = (req,res,next)=>{
-    if(req.userData.role!='admin'){
-        res.status(401).json({
-            message: 'Auth failed & not an Admin'
-        })
-    }else{
-        const id = req.params.busId;
-        Bus.findById(id)
-        .select('_id name source destination departure')
-        .exec()
-        .then(doc=>{
-            console.log('From Database' ,doc);
-            if(doc){
-                res.status(200).json({
-                    bus: doc,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:4000/bus'
-                    }
-                });
-            }else{
-                res.status(404).json({
-                    message: 'No Valid entry found for provided id'
-                })
-            }
-        })
-        .catch(err=>{
-            console.log(err);
-            err.status(500).json({
-                error:err
+    const id = req.params.busId;
+    Bus.findById(id)
+    .select('_id name source destination departure')
+    .exec()
+    .then(doc=>{
+        console.log('From Database' ,doc);
+        if(doc){
+            res.status(200).json({
+                bus: doc,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:4000/bus'
+                }
             });
+        }else{
+            res.status(404).json({
+                message: 'No Valid entry found for provided id'
+            })
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+        err.status(500).json({
+            error:err
         });
-    }
+    });
 }
 
 exports.buses_delete_bus = (req,res,next)=>{
