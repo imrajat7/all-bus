@@ -12,6 +12,7 @@ const busRoutes = require('./api/routes/bus');
 const bookingRoutes = require('./api/routes/booking');
 const searchRoutes = require('./api/routes/search');
 const homeRoute = require('./api/routes/home');
+const testingRoutes = require('./api/routes/testing');
 
 mongoose.connect(
     "mongodb+srv://all-bus:" + 
@@ -46,6 +47,7 @@ app.use('/admin',adminRoutes);
 app.use('/bus',busRoutes);
 app.use('/booking',bookingRoutes);
 app.use('/search',searchRoutes);
+app.use('/testing',testingRoutes);
 
 
 app.use((req,res,next)=>{
