@@ -52,7 +52,7 @@ exports.bookings_get_all = (req,res,next)=>{
         });
     }else{
         Booking.find()
-        .select('_id date busId userId email payment')
+        .select('_id date name busId userId email payment')
         .exec()
         .then(docs=>{
             const response = {
@@ -61,6 +61,7 @@ exports.bookings_get_all = (req,res,next)=>{
                     return {
                         _id: doc.id,
                         date: doc.date,
+                        name: doc.name,
                         busId: doc.busId,
                         userId: doc.userId,
                         email: doc.email,
@@ -86,6 +87,34 @@ exports.bookings_get_booking = (req,res,next)=>{
     const bookingId = req.params.bookingId;
     Booking.findById(bookingId)
     .select('_id date busId userId email payment')
+    .exec()
+    .then(doc=>{
+        if(doc){
+            res.status(200).json({
+                booking: doc,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:4000/booking/'
+                }
+            })
+        }else{
+            res.status(404).json({
+                message: 'No valid entry for provided booking id'
+            })
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    });   
+}
+
+exports.bookings_get_booking_by_name = (req,res,next)=>{
+    const name = req.params.name;
+    Booking.find({name})
+    .select('_id date busId name email payment')
     .exec()
     .then(doc=>{
         if(doc){

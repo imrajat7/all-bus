@@ -1,0 +1,14 @@
+POSt http://localhost:4000/user/login
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tZWdhQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVkZDU0ZjNlZWZiYzM3MjVjZTg4YTM0ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYwNjE4MzI5NSwiZXhwIjoxNjA2MTkwNDk1fQ.EsqLjFSq7zWvD94WF4gjrdpBdWhvexhbvqee9OTLl_I
+
+{
+  "email": "omega@gmail.com",
+  "password": "12345678"
+}
+
+
+
+# GET http://localhost:4000/booking/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tZWdhQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVkZDU0ZjNlZWZiYzM3MjVjZTg4YTM0ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYwNjE4MzI5NSwiZXhwIjoxNjA2MTkwNDk1fQ.EsqLjFSq7zWvD94WF4gjrdpBdWhvexhbvqee9OTLl_I
